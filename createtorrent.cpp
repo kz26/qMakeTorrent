@@ -1,9 +1,10 @@
 #include "createtorrent.h"
 
 #include <boost/version.hpp>
-#if BOOST_VERSION > 104800
+#if BOOST_VERSION >= 104800
 #define BOOST_ASIO_DYN_LINK
 #endif
+
 #include <libtorrent/version.hpp>
 #if LIBTORRENT_VERSION_MINOR < 16
 #define BOOST_FILESYSTEM_VERSION 2
