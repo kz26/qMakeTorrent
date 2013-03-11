@@ -1,6 +1,18 @@
 #include "createtorrent.h"
+
+#include <boost/version.hpp>
+#if BOOST_VERSION > 104800
+#define BOOST_ASIO_DYN_LINK
+#endif
+#include <libtorrent/version.hpp>
+#if LIBTORRENT_VERSION_MINOR < 16
+#define BOOST_FILESYSTEM_VERSION 2
+#endif
+
 #include <libtorrent/create_torrent.hpp>
 #include <QtGui>
+
+
 
 CreateTorrent::CreateTorrent(QObject *parent) :
     QThread(parent)
@@ -16,6 +28,10 @@ void CreateTorrent::makeTorrentFiles(QString source, bool isBatch, QString comme
     this->isPrivate = isPrivate;
     start();
 
+}
+
+bool addFileFilter(std::string const& f) {
+    return true;
 }
 
 void CreateTorrent::run() {

@@ -36,6 +36,4 @@ FORMS += \
     propertiespage.ui \
     creationpage.ui
 
-DEFINES += BOOST_ASIO_DYN_LINK=1
-
-LIBS += -lboost_system -ltorrent-rasterbar
+LIBS += -lboost_system -ltorrent-rasterbar -lboost_filesystem
