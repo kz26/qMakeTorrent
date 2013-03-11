@@ -11,6 +11,8 @@
 #include <boost/filesystem/path.hpp>
 #endif
 
+#include <boost/bind.hpp>
+
 #include <libtorrent/create_torrent.hpp>
 
 #include <QtGui>
@@ -48,6 +50,10 @@ bool file_filter(boost::filesystem::path const& filename)
 }
 #endif
 
+void CreateTorrent::sendProgressSignal(int i, int total) {
+    emit(updateProgress((int)(i * 100 / (float) total)));
+}
+
 void CreateTorrent::run() {
 
     QFileInfo inputInfo(this->source);
@@ -67,7 +73,7 @@ void CreateTorrent::run() {
     this->pieceCount = torrent.num_pieces();
     torrent.add_tracker("http://example.com");
     QFileInfo pSource(this->source);
-    set_piece_hashes(torrent, pSource.dir().path().toStdString());
+    set_piece_hashes(torrent, pSource.dir().path().toStdString(), boost::bind<void>(&CreateTorrent::sendProgressSignal, _1, torrent.num_pieces()));
     bencode(std::ostream_iterator<char>(std::cout), torrent.generate());
 }
 

@@ -10,6 +10,7 @@ public:
     explicit CreateTorrent(QObject *parent = 0);
     void makeTorrentFiles(QString source, bool isBatch, QString comment, QString creator, int pieceSize, bool isPrivate);
 signals:
+    void updateProgress(int i);
 
 public slots:
     
@@ -22,6 +23,7 @@ private:
     int pieceSize;
     bool isPrivate;
     int pieceCount;
+    void sendProgressSignal(int i, int total);
 
 };
 
