@@ -9,6 +9,7 @@ class CreateTorrent : public QThread
 public:
     explicit CreateTorrent(QObject *parent = 0);
     void makeTorrentFiles(QString source, bool isBatch, QString comment, QString creator, int pieceSize, bool isPrivate);
+    void sendProgressSignal(int i);
 signals:
     void updateProgress(int i);
 
@@ -23,7 +24,6 @@ private:
     int pieceSize;
     bool isPrivate;
     int pieceCount;
-    void sendProgressSignal(int i, int total);
 
 };
 

@@ -50,8 +50,12 @@ bool file_filter(boost::filesystem::path const& filename)
 }
 #endif
 
-void CreateTorrent::sendProgressSignal(int i, int total) {
-    emit(updateProgress((int)(i * 100 / (float) total)));
+void doProgressUpdate(int i, int total, CreateTorrent *parent) {
+    parent->sendProgressSignal((int) (i * 100 / (float) total));
+}
+
+void CreateTorrent::sendProgressSignal(int i) {
+    emit(updateProgress(i));
 }
 
 void CreateTorrent::run() {
@@ -73,7 +77,7 @@ void CreateTorrent::run() {
     this->pieceCount = torrent.num_pieces();
     torrent.add_tracker("http://example.com");
     QFileInfo pSource(this->source);
-    set_piece_hashes(torrent, pSource.dir().path().toStdString(), boost::bind<void>(&CreateTorrent::sendProgressSignal, _1, torrent.num_pieces()));
+    set_piece_hashes(torrent, pSource.dir().path().toStdString(), boost::bind<void>(&doProgressUpdate, _1, torrent.num_pieces(), this));
     bencode(std::ostream_iterator<char>(std::cout), torrent.generate());
 }
 
