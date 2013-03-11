@@ -10,14 +10,18 @@ InputPage::InputPage(QWidget *parent) :
     ui->setupUi(this);
 
     registerField("inputPath*", ui->inputPath);
+    registerField("batchMode", ui->batchMode);
     connect(ui->addFileButton, SIGNAL(clicked()), this, SLOT(browseFile()));
     connect(ui->addDirectoryButton, SIGNAL(clicked()), this, SLOT(browseDirectory()));
 }
 
 void InputPage::browseFile() {
     QFileDialog dialog(this);
-    if(dialog.exec())
+    if(dialog.exec()) {
         ui->inputPath->setText(dialog.selectedFiles().first());
+        ui->batchMode->setCheckState(Qt::Unchecked);
+        ui->batchMode->setEnabled(false);
+    }
 }
 
 void InputPage::browseDirectory() {
@@ -26,6 +30,7 @@ void InputPage::browseDirectory() {
     dialog.setOption(QFileDialog::ShowDirsOnly, true);
     if(dialog.exec())
         ui->inputPath->setText(dialog.selectedFiles().first());
+        ui->batchMode->setEnabled(true);
 }
 
 InputPage::~InputPage()

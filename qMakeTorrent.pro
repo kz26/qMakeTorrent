@@ -14,15 +14,28 @@ SOURCES += main.cpp\
         wizard.cpp \
     intropage.cpp \
     inputpage.cpp \
-    trackerspage.cpp
+    trackerspage.cpp \
+    propertiespage.cpp \
+    creationpage.cpp \
+    createtorrent.cpp
 
 HEADERS  += wizard.h \
     intropage.h \
     inputpage.h \
-    trackerspage.h
+    trackerspage.h \
+    propertiespage.h \
+    creationpage.h \
+    version.h \
+    createtorrent.h
 
 FORMS += \
     wizard.ui \
     intropage.ui \
     inputpage.ui \
-    trackerspage.ui
+    trackerspage.ui \
+    propertiespage.ui \
+    creationpage.ui
+
+DEFINES += BOOST_ASIO_DYN_LINK=1
+
+LIBS += -lboost_system -ltorrent-rasterbar

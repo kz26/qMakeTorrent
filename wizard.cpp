@@ -3,6 +3,8 @@
 #include "intropage.h"
 #include "inputpage.h"
 #include "trackerspage.h"
+#include "propertiespage.h"
+#include "creationpage.h"
 
 Wizard::Wizard(QWidget *parent) :
     QWizard(parent),
@@ -12,7 +14,8 @@ Wizard::Wizard(QWidget *parent) :
     this->addPage(new IntroPage);
     this->addPage(new InputPage);
     this->addPage(new TrackersPage);
-
+    this->addPage(new PropertiesPage);
+    this->addPage(new CreationPage);
 }
 
 Wizard::~Wizard()

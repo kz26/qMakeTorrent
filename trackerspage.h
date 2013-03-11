@@ -16,7 +16,10 @@ public:
     ~TrackersPage();
 
     bool isComplete() const;
-    
+
+public slots:
+    void inputChanged();
+
 private:
     Ui::TrackersPage *ui;
 };

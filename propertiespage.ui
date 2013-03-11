@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InputPage</class>
- <widget class="QWizardPage" name="InputPage">
+ <class>PropertiesPage</class>
+ <widget class="QWizardPage" name="PropertiesPage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,37 +21,43 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLineEdit" name="inputPath">
-     <property name="readOnly">
-      <bool>true</bool>
+    <widget class="QLabel" name="commentLabel">
+     <property name="text">
+      <string>Comment</string>
      </property>
     </widget>
    </item>
    <item>
+    <widget class="QLineEdit" name="comment"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="creatorLabel">
+     <property name="text">
+      <string>Creator</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="creator"/>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="addFileButton">
-       <property name="text">
-        <string>Add file</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="pieceSize"/>
      </item>
      <item>
-      <widget class="QPushButton" name="addDirectoryButton">
+      <widget class="QLabel" name="pieceSizeLabel">
        <property name="text">
-        <string>Add directory</string>
+        <string>Piece size</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QCheckBox" name="batchMode">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
+    <widget class="QCheckBox" name="privateTorrent">
      <property name="text">
-      <string>Batch mode</string>
+      <string>Private torrent</string>
      </property>
     </widget>
    </item>
