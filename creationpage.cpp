@@ -1,6 +1,7 @@
 #include "creationpage.h"
 #include "ui_creationpage.h"
 #include "createtorrent.h"
+#include <QtGui>
 
 CreationPage::CreationPage(QWidget *parent) :
     QWizardPage(parent),
@@ -15,6 +16,6 @@ CreationPage::~CreationPage()
 }
 
 void CreationPage::initializePage() {
-    CreateTorrent *ctThread = new CreateTorrent;
+    CreateTorrent *ctThread = new CreateTorrent(this);
     ctThread->makeTorrentFiles(field("inputPath").toString(), false, field("comment").toString(), field("creator").toString(), field("pieceSize").toInt(), field("privateTorrent").toBool());
 }

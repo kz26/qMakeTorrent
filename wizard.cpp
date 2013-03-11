@@ -16,6 +16,7 @@ Wizard::Wizard(QWidget *parent) :
     this->addPage(new TrackersPage);
     this->addPage(new PropertiesPage);
     this->addPage(new CreationPage);
+    this->setOption(this->DisabledBackButtonOnLastPage, true);
 }
 
 Wizard::~Wizard()
