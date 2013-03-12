@@ -16,7 +16,6 @@ InputPage::InputPage(QWidget *parent) :
     connect(ui->addDirectoryButton, SIGNAL(clicked()), this, SLOT(browseInputDirectory()));
     connect(ui->outputPathButton, SIGNAL(clicked()), this, SLOT(browseOutputDirectory()));
     connect(ui->inputPath, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged()));
-    connect(ui->outputPath, SIGNAL(textChanged(QString)), this, SIGNAL(completeChanged());
 }
 
 void InputPage::browseInputFile() {
@@ -46,6 +45,10 @@ void InputPage::browseOutputDirectory() {
     dialog.setOption(QFileDialog::ShowDirsOnly, true);
     if(dialog.exec())
         ui->outputPath->setText(dialog.selectedFiles().first());
+}
+
+bool InputPage::isComplete() const {
+    return QFileInfo(ui->inputPath->text()).exists() && QFileInfo(ui->outputPath->text()).exists();
 }
 
 InputPage::~InputPage()

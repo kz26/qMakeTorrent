@@ -20,10 +20,6 @@ bool TrackersPage::isComplete() const {
     return false;
 }
 
-void TrackersPage::inputChanged() {
-    emit(completeChanged());
-}
-
 TrackersPage::~TrackersPage()
 {
     delete ui;
