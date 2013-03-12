@@ -57,6 +57,9 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="toolTip">
+      <string>Create separate torrents for each file and folder within the input directory</string>
+     </property>
      <property name="text">
       <string>Batch mode</string>
      </property>
