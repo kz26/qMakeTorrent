@@ -2,6 +2,6 @@
 #define VERSION_H
 
 #define PROGRAM_NAME "qMakeTorrent"
-#define PROGRAM_VERSION "0.1"
+#define PROGRAM_VERSION "0.95"
 
 #endif

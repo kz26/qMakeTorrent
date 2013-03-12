@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PropertiesPage</class>
- <widget class="QWizardPage" name="PropertiesPage">
+ <class>OutputPage</class>
+ <widget class="QWizardPage" name="OutputPage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,7 +21,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="pageTitle">
+    <widget class="QLabel" name="label">
      <property name="font">
       <font>
        <pointsize>14</pointsize>
@@ -30,48 +30,24 @@
       </font>
      </property>
      <property name="text">
-      <string>Set torrent properties</string>
+      <string>Select output location</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="commentLabel">
+    <widget class="QLabel" name="description">
      <property name="text">
-      <string>Comment</string>
+      <string>TextLabel</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="comment"/>
+    <widget class="QLineEdit" name="outputPath"/>
    </item>
    <item>
-    <widget class="QLabel" name="creatorLabel">
+    <widget class="QPushButton" name="browseOutputButton">
      <property name="text">
-      <string>Creator</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="creator"/>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QComboBox" name="pieceSize"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="pieceSizeLabel">
-       <property name="text">
-        <string>Piece size</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QCheckBox" name="privateTorrent">
-     <property name="text">
-      <string>Private torrent</string>
+      <string>Browse...</string>
      </property>
     </widget>
    </item>

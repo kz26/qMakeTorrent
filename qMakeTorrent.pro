@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     trackerspage.cpp \
     propertiespage.cpp \
     creationpage.cpp \
-    createtorrent.cpp
+    createtorrent.cpp \
+    outputpage.cpp
 
 HEADERS  += wizard.h \
     intropage.h \
@@ -26,7 +27,8 @@ HEADERS  += wizard.h \
     propertiespage.h \
     creationpage.h \
     version.h \
-    createtorrent.h
+    createtorrent.h \
+    outputpage.h
 
 FORMS += \
     wizard.ui \
@@ -34,6 +36,7 @@ FORMS += \
     inputpage.ui \
     trackerspage.ui \
     propertiespage.ui \
-    creationpage.ui
+    creationpage.ui \
+    outputpage.ui
 
 LIBS += -lboost_system -ltorrent-rasterbar -lboost_filesystem

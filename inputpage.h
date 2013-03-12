@@ -19,7 +19,6 @@ public:
 public slots:
     void browseInputFile();
     void browseInputDirectory();
-    void browseOutputDirectory();
 
 private:
     Ui::InputPage *ui;

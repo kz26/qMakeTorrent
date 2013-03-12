@@ -21,9 +21,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="inputPathLabel">
+    <widget class="QLabel" name="pageTitle">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>Input path</string>
+      <string>Select input path</string>
      </property>
     </widget>
    </item>
@@ -62,27 +69,6 @@
      </property>
      <property name="text">
       <string>Batch mode</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="outputPathLabel">
-     <property name="text">
-      <string>Output path</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="outputPath">
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="outputPathButton">
-     <property name="text">
-      <string>Browse...</string>
      </property>
     </widget>
    </item>
