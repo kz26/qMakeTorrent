@@ -12,6 +12,7 @@ public:
     void sendProgressSignal(int i);
 signals:
     void updateProgress(int i);
+    void logAddedFile(QString filename);
 
 public slots:
     

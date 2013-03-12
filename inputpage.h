@@ -14,10 +14,12 @@ class InputPage : public QWizardPage
 public:
     explicit InputPage(QWidget *parent = 0);
     ~InputPage();
+    bool isComplete() const;
     
 public slots:
-    void browseFile();
-    void browseDirectory();
+    void browseInputFile();
+    void browseInputDirectory();
+    void browseOutputDirectory();
 
 private:
     Ui::InputPage *ui;

@@ -18,6 +18,11 @@ public:
     
 private:
     Ui::CreationPage *ui;
+
+private slots:
+    void updateProgress(int i);
+    void logAddedFile(QString filename);
+    void setFinishedText();
 };
 
 #endif // CREATIONPAGE_H

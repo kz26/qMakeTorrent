@@ -10,8 +10,8 @@ TrackersPage::TrackersPage(QWidget *parent) :
     registerField("announceUrls", ui->announceUrls);
     registerField("webSeeds", ui->webSeeds);
 
-    connect(ui->announceUrls, SIGNAL(textChanged()), this, SLOT(inputChanged()));
-    connect(ui->webSeeds, SIGNAL(textChanged()), this, SLOT(inputChanged()));
+    connect(ui->announceUrls, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));
+    connect(ui->webSeeds, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));
 }
 
 bool TrackersPage::isComplete() const {

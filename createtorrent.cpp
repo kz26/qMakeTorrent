@@ -8,9 +8,9 @@
 #include <libtorrent/version.hpp>
 #if LIBTORRENT_VERSION_MINOR < 16
 #define BOOST_FILESYSTEM_VERSION 2
-#include <boost/filesystem/path.hpp>
 #endif
 
+#include <boost/filesystem/path.hpp>
 #include <boost/bind.hpp>
 
 #include <libtorrent/create_torrent.hpp>
@@ -39,7 +39,7 @@ void CreateTorrent::makeTorrentFiles(QString source, bool isBatch, QString comme
 #if LIBTORRENT_VERSION_MINOR >= 16
 bool file_filter(std::string const& f)
 {
-        if (filename(f)[0] == '.') return false;
+        if (libtorrent::filename(f)[0] == '.') return false;
         return true;
 }
 #else
@@ -65,8 +65,8 @@ void CreateTorrent::run() {
         QDirIterator iit(this->source, QDirIterator::Subdirectories);
         while(iit.hasNext()) {
             QString fn = iit.next();
-            if(file_filter(boost::filesystem::path(fn.toUtf8().constData())))
-                qDebug() << fn;
+            if(file_filter(fn.toUtf8().constData()))
+                emit(logAddedFile(fn));
         }
     }
 
@@ -79,6 +79,7 @@ void CreateTorrent::run() {
     QFileInfo pSource(this->source);
     set_piece_hashes(torrent, pSource.dir().path().toStdString(), boost::bind<void>(&doProgressUpdate, _1, torrent.num_pieces(), this));
     bencode(std::ostream_iterator<char>(std::cout), torrent.generate());
+    emit(updateProgress(100));
 }
 
 
