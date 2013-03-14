@@ -9,6 +9,8 @@ IntroPage::IntroPage(QWidget *parent) :
     ui->setupUi(this);
 
     ui->programTitle->setText(QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION));
+    ui->programUrl->setText(QString("<a href='%1'>%1</a>").arg(PROGRAM_URL));
+
 }
 
 IntroPage::~IntroPage()
