@@ -55,6 +55,7 @@ void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, boo
         this->pieceSize = 0;
     else
         this->pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
+    qDebug() << this->pieceSize;
     this->isPrivate = isPrivate;
     start();
 
@@ -120,8 +121,7 @@ void CreateTorrent::run() {
 
         file_storage fs;
         add_files(fs, input.toUtf8().constData(), file_filter);
-        create_torrent torrent(fs);
-        fs.piece_size(this->pieceSize);
+        create_torrent torrent(fs, this->pieceSize);
         this->pieceCount = torrent.num_pieces();
 
         QStringListIterator webSeedList(this->webSeeds.split("\n"));
