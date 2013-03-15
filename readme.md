@@ -2,20 +2,24 @@
 * Current version: 1.0.0
 * Author: whitehat2k9
 * License: Copyright 2013, GNU General Public License v3
-* Website: <http://whitehat2k9.github.com/qMakeTorrent
+* [Website](http://whitehat2k9.github.com/qMakeTorrent)
+* [Source repository](http://github.com/whitehat2k9/qMakeTorrent)
 
 ## Description
 qMakeTorrent is an advanced torrent creator with batch capability.
 
 ## Installation
+### Windows
+[Click here](http://http://whitehat2k9.github.com/qMakeTorrent/bin/qMakeTorrent-1.0.0-win32.zip) to download
+a prebuilt version for Windows.
+
+* You may need to download the [Microsoft Visual C++ 2010 SP1 Redistributable Package (x86)](http://www.microsoft.com/en-us/download/details.aspx?id=8328).
+
 ### Linux/UNIX
-Requires a Qt4 development environment, C++/Boost 1.46+, and a recent version of libtorrent
+Requires a Qt4 development environment, C++/Boost 1.46+, and a recent version of libtorrent (>= 0.15.x).
 
     $ qmake
     $ make
-
-### Windows
-Windows binaries can be found on the project page above.
 
 ### Mac
 In theory compilation should be the same as on Linux/UNIX. If someone wishes to contribute binaries
