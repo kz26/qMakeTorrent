@@ -82,7 +82,7 @@
       <bool>false</bool>
      </property>
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create separate torrents for each subdirectory within the input directory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Create separate torrents for each subdirectory within the input directory</string>
      </property>
      <property name="text">
       <string>Batch mode</string>

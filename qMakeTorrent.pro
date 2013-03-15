@@ -40,3 +40,6 @@ FORMS += \
     outputpage.ui
 
 LIBS += -lboost_system -ltorrent-rasterbar -lboost_filesystem
+
+OTHER_FILES += \
+    readme.md

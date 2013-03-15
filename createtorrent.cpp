@@ -47,8 +47,8 @@ void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, boo
     this->source = source;
     this->outputLocation = outputLocation;
     this->isBatch = isBatch;
-    this->announceUrls = announceUrls;
-    this->webSeeds = webSeeds;
+    this->announceUrls = announceUrls.split("\n");
+    this->webSeeds = webSeeds.split("\n");
     this->comment = comment;
     this->creator = creator;
     if(pieceSizeIndex == 0)
@@ -126,14 +126,13 @@ void CreateTorrent::run() {
         create_torrent torrent(fs, this->pieceSize);
         this->pieceCount = torrent.num_pieces();
 
-        QStringListIterator webSeedList(this->webSeeds.split("\n"));
-        while(webSeedList.hasNext())
-            torrent.add_url_seed(webSeedList.next().trimmed().toStdString());
+        foreach(const QString &webSeed, this->webSeeds) {
+            torrent.add_url_seed(webSeed.trimmed().toStdString());
+        }
 
         int tier = 0;
-        QStringListIterator trackerList(this->announceUrls.split("\n"));
-        while(trackerList.hasNext()) {
-            torrent.add_tracker(trackerList.next().trimmed().toStdString(), tier);
+        foreach(const QString &tracker, this->announceUrls) {
+            torrent.add_tracker(tracker.trimmed().toStdString(), tier);
             tier++;
         }
 

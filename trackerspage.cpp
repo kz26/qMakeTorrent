@@ -27,8 +27,8 @@ TrackersPage::TrackersPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    registerField("announceUrls", ui->announceUrls);
-    registerField("webSeeds", ui->webSeeds);
+    registerField("announceUrls", ui->announceUrls, "plainText");
+    registerField("webSeeds", ui->webSeeds, "plainText");
 
     connect(ui->announceUrls, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));
     connect(ui->webSeeds, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));

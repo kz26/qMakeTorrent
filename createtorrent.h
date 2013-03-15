@@ -21,6 +21,7 @@
 #define CREATETORRENT_H
 
 #include <QThread>
+#include <QStringList>
 
 class CreateTorrent : public QThread
 {
@@ -40,8 +41,8 @@ private:
     QString source;
     QString outputLocation;
     bool isBatch;
-    QString announceUrls;
-    QString webSeeds;
+    QStringList announceUrls;
+    QStringList webSeeds;
     QString comment;
     QString creator;
     int pieceSize;
