@@ -95,8 +95,10 @@ void CreateTorrent::run() {
         QDirIterator iit(this->source);
         while(iit.hasNext()) {
             QString fn = iit.next();
-            if(file_filter(fn.toUtf8().constData()))
-                inputList.append(iit.next());
+            if(QFileInfo(fn).isDir()) {
+                if(file_filter(fn.toUtf8().constData()))
+                    inputList.append(fn);
+            }
         }
     }
 
