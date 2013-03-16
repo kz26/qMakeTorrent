@@ -1,5 +1,5 @@
 # qMakeTorrent
-* Current version: 1.0.0
+* Current version: 1.0.1
 * Author: whitehat2k9
 * License: BSD 2-Clause License
 * [Website](http://whitehat2k9.github.com/qMakeTorrent)
