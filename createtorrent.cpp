@@ -25,16 +25,6 @@
 
 #include "createtorrent.h"
 
-#include <boost/version.hpp>
-#if BOOST_VERSION >= 104800
-#define BOOST_ASIO_DYN_LINK
-#endif
-
-#include <libtorrent/version.hpp>
-#if LIBTORRENT_VERSION_MINOR < 16
-#define BOOST_FILESYSTEM_VERSION 2
-#endif
-
 #include <fstream>
 #include <boost/filesystem/path.hpp>
 #include <boost/bind.hpp>
@@ -48,7 +38,7 @@ CreateTorrent::CreateTorrent(QObject *parent) :
 {
 }
 
-void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSizeIndex, bool isPrivate) {
+void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSizeIndex, int flags, bool isPrivate) {
     this->source = source;
     this->outputLocation = outputLocation;
     this->isBatch = isBatch;
@@ -60,7 +50,7 @@ void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, boo
         this->pieceSize = 0;
     else
         this->pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
-    qDebug() << this->pieceSize;
+    this->flags = flags;
     this->isPrivate = isPrivate;
     start();
 
@@ -128,7 +118,7 @@ void CreateTorrent::run() {
 
         file_storage fs;
         add_files(fs, input.toUtf8().constData(), file_filter);
-        create_torrent torrent(fs, this->pieceSize);
+        create_torrent torrent(fs, this->pieceSize, -1, this->flags);
         this->pieceCount = torrent.num_pieces();
 
         foreach(const QString &webSeed, this->webSeeds) {

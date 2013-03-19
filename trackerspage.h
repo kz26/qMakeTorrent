@@ -39,8 +39,6 @@ public:
     explicit TrackersPage(QWidget *parent = 0);
     ~TrackersPage();
 
-    bool isComplete() const;
-
 public slots:
 
 private:

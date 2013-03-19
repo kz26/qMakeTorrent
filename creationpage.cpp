@@ -26,6 +26,8 @@
 #include "creationpage.h"
 #include "ui_creationpage.h"
 #include "createtorrent.h"
+#include "version.h"
+#include <libtorrent/create_torrent.hpp>
 #include <QtGui>
 
 CreationPage::CreationPage(QWidget *parent) :
@@ -57,5 +59,12 @@ void CreationPage::initializePage() {
     connect(ctThread, SIGNAL(updateProgress(int)), this, SLOT(updateProgress(int)));
     connect(ctThread, SIGNAL(logStatusMessage(QString)), this, SLOT(logAddedFile(QString)));
     connect(ctThread, SIGNAL(finished()), this, SLOT(setFinishedText()));
-    ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), field("creator").toString(), field("pieceSize").toInt(), field("privateTorrent").toBool());
+
+    using namespace libtorrent;
+
+    int includeFileModTimes = field("includeFileModTimes").toBool() ? create_torrent::modification_time : 0;
+    int includeSymlinks = field("includeSymlinks").toBool() ? create_torrent::symlinks : 0;
+    int flags = includeFileModTimes | includeSymlinks;
+
+    ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION), field("pieceSize").toInt(), flags, field("privateTorrent").toBool());
 }

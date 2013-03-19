@@ -40,7 +40,7 @@ OutputPage::OutputPage(QWidget *parent) :
 }
 
 void OutputPage::initializePage() {
-    QFileInfo inputInfo(field("inputPath").toString());
+    inputInfo = QFileInfo(field("inputPath").toString());
     showSaveDir = inputInfo.isDir() && field("batchMode").toBool();
     if(showSaveDir)
         ui->description->setText("Choose a directory to save the torrent files in.");
@@ -52,6 +52,7 @@ void OutputPage::browseOutputLocation() {
     QFileDialog dialog(this);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     if(!showSaveDir) {
+        dialog.selectFile(inputInfo.baseName() + ".torrent");
         dialog.setDefaultSuffix("torrent");
         dialog.setNameFilter("Torrent file (*.torrent)");
     }

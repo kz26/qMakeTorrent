@@ -45,19 +45,13 @@
     <widget class="QLineEdit" name="comment"/>
    </item>
    <item>
-    <widget class="QLabel" name="creatorLabel">
-     <property name="text">
-      <string>Creator</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="creator"/>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QComboBox" name="pieceSize"/>
+      <widget class="QComboBox" name="pieceSize">
+       <property name="toolTip">
+        <string>If set to&quot;auto,&quot; a piece size will be calculated such that the torrent file is roughly 40 kB.</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="pieceSizeLabel">
@@ -69,7 +63,39 @@
     </layout>
    </item>
    <item>
+    <widget class="QCheckBox" name="includeFileModTimes">
+     <property name="toolTip">
+      <string>This will include the file modification time as part of the torrent.
+This is not enabled by default, as it might cause problems 
+when you create a torrent from separate files with the same content,
+hoping to yield the same info-hash. If the files have different 
+modification times, with this option enabled, you would get 
+different info-hashes for the files.</string>
+     </property>
+     <property name="text">
+      <string>Include file modification times</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="includeSymlinks">
+     <property name="toolTip">
+      <string>If this flag is set, files that are symlinks get a symlink attribute set on
+ them and their data will not be included in the torrent. 
+This is useful if you need to reconstruct a file hierarchy which 
+contains symlinks.</string>
+     </property>
+     <property name="text">
+      <string>Include symlinks</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="privateTorrent">
+     <property name="toolTip">
+      <string>Sets the private flag, which instructs torrent clients to 
+not use DHT or PEX.</string>
+     </property>
      <property name="text">
       <string>Private torrent</string>
      </property>

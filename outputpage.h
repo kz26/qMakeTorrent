@@ -46,6 +46,7 @@ public slots:
 private:
     Ui::OutputPage *ui;
     bool showSaveDir;
+    QFileInfo inputInfo;
 };
 
 #endif // OUTPUTPAGE_H

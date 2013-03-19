@@ -35,11 +35,11 @@ PropertiesPage::PropertiesPage(QWidget *parent) :
     ui->setupUi(this);
 
     registerField("comment", ui->comment);
-    registerField("creator", ui->creator);
     registerField("pieceSize", ui->pieceSize);
+    registerField("includeFileModTimes", ui->includeFileModTimes);
+    registerField("includeSymlinks", ui->includeSymlinks);
     registerField("privateTorrent", ui->privateTorrent);
 
-    ui->creator->setText(QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION));
 }
 
 void PropertiesPage::initializePage() {

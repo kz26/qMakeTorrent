@@ -42,4 +42,7 @@ FORMS += \
 LIBS += -lboost_system -ltorrent-rasterbar -lboost_filesystem
 
 OTHER_FILES += \
-    readme.md
+    readme.md \
+    README.md \
+    CHANGELOG.md \
+    LICENSE

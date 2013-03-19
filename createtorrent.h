@@ -25,6 +25,16 @@
 #ifndef CREATETORRENT_H
 #define CREATETORRENT_H
 
+#include <boost/version.hpp>
+#if BOOST_VERSION >= 104800
+#define BOOST_ASIO_DYN_LINK
+#endif
+
+#include <libtorrent/version.hpp>
+#if LIBTORRENT_VERSION_MINOR < 16
+#define BOOST_FILESYSTEM_VERSION 2
+#endif
+
 #include <QThread>
 #include <QStringList>
 
@@ -33,7 +43,7 @@ class CreateTorrent : public QThread
     Q_OBJECT
 public:
     explicit CreateTorrent(QObject *parent = 0);
-    void makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSizeIndex, bool isPrivate);
+    void makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSizeIndex, int flags, bool isPrivate);
     void sendProgressSignal(int i);
 signals:
     void updateProgress(int i);
@@ -51,6 +61,7 @@ private:
     QString comment;
     QString creator;
     int pieceSize;
+    int flags;
     bool isPrivate;
     int pieceCount;
 

@@ -35,14 +35,6 @@ TrackersPage::TrackersPage(QWidget *parent) :
     registerField("announceUrls", ui->announceUrls, "plainText");
     registerField("webSeeds", ui->webSeeds, "plainText");
 
-    connect(ui->announceUrls, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));
-    connect(ui->webSeeds, SIGNAL(textChanged()), this, SIGNAL(completeChanged()));
-}
-
-bool TrackersPage::isComplete() const {
-    if(ui->announceUrls->toPlainText().length() != 0 || ui->webSeeds->toPlainText().length() != 0)
-        return true;
-    return false;
 }
 
 TrackersPage::~TrackersPage()

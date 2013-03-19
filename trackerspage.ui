@@ -34,6 +34,13 @@
    <item>
     <widget class="QPlainTextEdit" name="webSeeds"/>
    </item>
+   <item>
+    <widget class="QLabel" name="dhtOnlyLabel">
+     <property name="text">
+      <string>You may leave both fields blank for a DHT/PEX-only torrent.</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
