@@ -1,5 +1,6 @@
 # 1.0.2 - 2013-03-18
 * Removed requirement to add trackers/webseeds (for DHT-only torrents)
+* Removed ability to customize creator string (will always be set to qMakeTorrent <version>)
 * Exposed some more libtorrent options (file modification time, symlinks)
 * Small fixes
 
