@@ -39,14 +39,16 @@ public:
     explicit CreationPage(QWidget *parent = 0);
     ~CreationPage();
     void initializePage();
+    bool isComplete() const;
     
 private:
     Ui::CreationPage *ui;
+    bool torrentDone;
 
 private slots:
     void updateProgress(int i);
     void logAddedFile(QString filename);
-    void setFinishedText();
+    void triggerFinished();
 };
 
 #endif // CREATIONPAGE_H

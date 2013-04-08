@@ -35,11 +35,16 @@ CreationPage::CreationPage(QWidget *parent) :
     ui(new Ui::CreationPage)
 {
     ui->setupUi(this);
+    torrentDone = false;
 }
 
 CreationPage::~CreationPage()
 {
     delete ui;
+}
+
+bool CreationPage::isComplete() const {
+    return torrentDone;
 }
 
 void CreationPage::updateProgress(int i) {
@@ -50,15 +55,17 @@ void CreationPage::logAddedFile(QString filename) {
     ui->statusLog->appendPlainText(filename);
 }
 
-void CreationPage::setFinishedText() {
+void CreationPage::triggerFinished() {
     ui->titleLabel->setText("Torrent creation completed.");
+    torrentDone = true;
+    emit completeChanged();
 }
 
 void CreationPage::initializePage() {
     CreateTorrent *ctThread = new CreateTorrent(this);
     connect(ctThread, SIGNAL(updateProgress(int)), this, SLOT(updateProgress(int)));
     connect(ctThread, SIGNAL(logStatusMessage(QString)), this, SLOT(logAddedFile(QString)));
-    connect(ctThread, SIGNAL(finished()), this, SLOT(setFinishedText()));
+    connect(ctThread, SIGNAL(finished()), this, SLOT(triggerFinished()));
 
     using namespace libtorrent;
 
