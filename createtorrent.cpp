@@ -46,10 +46,7 @@ void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, boo
     this->webSeeds = webSeeds.split("\n");
     this->comment = comment;
     this->creator = creator;
-    if(pieceSizeIndex == 0)
-        this->pieceSize = 0;
-    else
-        this->pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
+    this->pieceSize = pieceSize;
     this->flags = flags;
     this->isPrivate = isPrivate;
     start();
@@ -122,13 +119,16 @@ void CreateTorrent::run() {
         this->pieceCount = torrent.num_pieces();
 
         foreach(const QString &webSeed, this->webSeeds) {
-            torrent.add_url_seed(webSeed.trimmed().toStdString());
+            if (!webSeeds.isEmpty())
+                torrent.add_url_seed(webSeed.trimmed().toStdString());
         }
 
         int tier = 0;
         foreach(const QString &tracker, this->announceUrls) {
-            torrent.add_tracker(tracker.trimmed().toStdString(), tier);
-            tier++;
+            if (!tracker.isEmpty()) {
+                torrent.add_tracker(tracker.trimmed().toStdString(), tier);
+                tier++;
+            }
         }
 
         torrent.set_priv(this->isPrivate);

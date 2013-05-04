@@ -37,6 +37,12 @@ TrackersPage::TrackersPage(QWidget *parent) :
 
 }
 
+bool TrackersPage::validatePage() {
+    ui->announceUrls->setPlainText(ui->announceUrls->toPlainText().trimmed());
+    ui->webSeeds->setPlainText(ui->webSeeds->toPlainText().trimmed());
+    return true;
+}
+
 TrackersPage::~TrackersPage()
 {
     delete ui;

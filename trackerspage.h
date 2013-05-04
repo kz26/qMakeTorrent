@@ -37,6 +37,7 @@ class TrackersPage : public QWizardPage
     
 public:
     explicit TrackersPage(QWidget *parent = 0);
+    bool validatePage();
     ~TrackersPage();
 
 public slots:

@@ -1,3 +1,9 @@
+# 1.0.3 - 2013-05-04
+* Added summary screen
+* Fix: prevent finish button from being clicked before torrent creation is complete
+* Fix: prevent empty tracker/webseed lines from being added
+* Minor refactoring
+
 # 1.0.2 - 2013-03-18
 * Removed requirement to add trackers/webseeds (for DHT-only torrents)
 * Removed ability to customize creator string (will always be set to qMakeTorrent <version>)

@@ -26,7 +26,7 @@
 #define VERSION_H
 
 #define PROGRAM_NAME "qMakeTorrent"
-#define PROGRAM_VERSION "1.0.2"
+#define PROGRAM_VERSION "1.0.3"
 #define PROGRAM_URL "http://whitehat2k9.github.com/qMakeTorrent"
 
 #endif

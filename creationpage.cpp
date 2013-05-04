@@ -73,5 +73,12 @@ void CreationPage::initializePage() {
     int includeSymlinks = field("includeSymlinks").toBool() ? create_torrent::symlinks : 0;
     int flags = includeFileModTimes | includeSymlinks;
 
-    ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION), field("pieceSize").toInt(), flags, field("privateTorrent").toBool());
+    int pieceSizeIndex = field("pieceSize").toInt();
+    int pieceSize;
+    if(pieceSizeIndex == 0)
+        pieceSize = 0;
+    else
+        pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
+
+    ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION), pieceSize, flags, field("privateTorrent").toBool());
 }

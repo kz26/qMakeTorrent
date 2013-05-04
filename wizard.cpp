@@ -30,6 +30,7 @@
 #include "outputpage.h"
 #include "trackerspage.h"
 #include "propertiespage.h"
+#include "summarypage.h"
 #include "creationpage.h"
 #include "version.h"
 
@@ -46,6 +47,7 @@ Wizard::Wizard(QWidget *parent) :
     this->addPage(new OutputPage);
     this->addPage(new TrackersPage);
     this->addPage(new PropertiesPage);
+    this->addPage(new SummaryPage);
     this->addPage(new CreationPage);
     this->setOption(this->DisabledBackButtonOnLastPage, true);
 }
