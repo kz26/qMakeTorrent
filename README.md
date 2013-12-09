@@ -1,5 +1,5 @@
 # qMakeTorrent
-* Current version: 1.0.3
+* Current version: 1.1.0
 * Author: kz26
 * License: BSD
 * [Website](http://kz26.github.com/qMakeTorrent)
@@ -10,10 +10,9 @@ qMakeTorrent is an advanced torrent creator with batch capability.
 
 ## Installation
 ### Windows
-[Click here](http://kz26.github.com/qMakeTorrent/bin/qMakeTorrent-1.0.3-win32.zip) to download
-a prebuilt version for Windows.
+[Click here](https://github.com/kz26/qMakeTorrent/releases) to download ready-to-use binaries.
 
-You may need to download the [Microsoft Visual C++ 2010 SP1 Redistributable Package (x86)](http://www.microsoft.com/en-us/download/details.aspx?id=8328).
+You may need to download the [Microsoft Visual C++ 2013 Redistributable Package (x86)](http://www.microsoft.com/en-us/download/details.aspx?id=8328).
 
 ### Linux/UNIX
 Download a [stable release version](https://github.com/kz26/qMakeTorrent/tags) or clone the latest development source from GitHub.

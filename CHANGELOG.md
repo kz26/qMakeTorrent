@@ -1,3 +1,9 @@
+# 1.1.0 - 2013-12-9
+* Fixed crashing bug during torrent creation
+* Set default piece size to Auto
+* Compile Windows binaries with VS2013
+* Minor refactoring
+
 # 1.0.3 - 2013-05-04
 * Added summary screen
 * Fix: prevent finish button from being clicked before torrent creation is complete

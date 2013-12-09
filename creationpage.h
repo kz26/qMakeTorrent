@@ -1,4 +1,4 @@
-/* * Copyright (c) 2013 whitehat2k9 <whitehat2k9@gmail.com>
+/* * Copyright (c) 2013 kz26
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,

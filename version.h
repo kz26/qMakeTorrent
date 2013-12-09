@@ -1,4 +1,4 @@
-/* * Copyright (c) 2013 whitehat2k9 <whitehat2k9@gmail.com>
+/* * Copyright (c) 2013 kz26
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -26,7 +26,7 @@
 #define VERSION_H
 
 #define PROGRAM_NAME "qMakeTorrent"
-#define PROGRAM_VERSION "1.0.3"
-#define PROGRAM_URL "http://whitehat2k9.github.com/qMakeTorrent"
+#define PROGRAM_VERSION "1.1.0"
+#define PROGRAM_URL "https://github.com/kz26/qMakeTorrent"
 
 #endif
