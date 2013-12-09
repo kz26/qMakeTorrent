@@ -61,15 +61,11 @@ void CreationPage::triggerFinished() {
     emit completeChanged();
 }
 
-void CreationPage::killThread() {
-    this->ctThread->exit();
-}
-
 void CreationPage::initializePage() {
-    this->ctThread = new CreateTorrent(this);
-    connect(this->ctThread, SIGNAL(updateProgress(int)), this, SLOT(updateProgress(int)));
-    connect(this->ctThread, SIGNAL(logStatusMessage(QString)), this, SLOT(logAddedFile(QString)));
-    connect(this->ctThread, SIGNAL(finished()), this, SLOT(triggerFinished()));
+    CreateTorrent *ctThread = new CreateTorrent(this);
+    connect(ctThread, SIGNAL(updateProgress(int)), this, SLOT(updateProgress(int)));
+    connect(ctThread, SIGNAL(logStatusMessage(QString)), this, SLOT(logAddedFile(QString)));
+    connect(ctThread, SIGNAL(finished()), this, SLOT(triggerFinished()));
 
     using namespace libtorrent;
 
@@ -84,5 +80,5 @@ void CreationPage::initializePage() {
     else
         pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
 
-    this->ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION), pieceSize, flags, field("privateTorrent").toBool());
+    ctThread->makeTorrentFiles(field("inputPath").toString(), field("outputPath").toString(), field("batchMode").toBool(), field("announceUrls").toString(), field("webSeeds").toString(), field("comment").toString(), QString("%1 %2").arg(PROGRAM_NAME, PROGRAM_VERSION), pieceSize, flags, field("privateTorrent").toBool());
 }
