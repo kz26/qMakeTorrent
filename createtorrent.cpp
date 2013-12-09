@@ -38,7 +38,7 @@ CreateTorrent::CreateTorrent(QObject *parent) :
 {
 }
 
-void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSizeIndex, int flags, bool isPrivate) {
+void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, bool isBatch, QString announceUrls, QString webSeeds, QString comment, QString creator, int pieceSize, int flags, bool isPrivate) {
     this->source = source;
     this->outputLocation = outputLocation;
     this->isBatch = isBatch;
@@ -82,14 +82,14 @@ void CreateTorrent::run() {
 
     QStringList inputList;
     if(!this->isBatch)
-        inputList.append(this->source);
+        inputList.append(this->source.toUtf8().constData());
     else {
         QDirIterator iit(this->source);
         while(iit.hasNext()) {
             QString fn = iit.next();
             if(QFileInfo(fn).isDir()) {
                 if(file_filter(fn.toUtf8().constData()))
-                    inputList.append(fn);
+                    inputList.append(fn.toUtf8().constData());
             }
         }
     }

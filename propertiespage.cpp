@@ -48,6 +48,7 @@ void PropertiesPage::initializePage() {
         QString label = QString("%1 KB").arg(QString::number(x));
         ui->pieceSize->addItem(label, x * 1024);
     }
+    ui->pieceSize->setCurrentIndex(0);
 }
 
 PropertiesPage::~PropertiesPage()
