@@ -26,6 +26,7 @@
 #define CREATIONPAGE_H
 
 #include <QWizardPage>
+#include "createtorrent.h"
 
 namespace Ui {
 class CreationPage;
@@ -41,9 +42,13 @@ public:
     void initializePage();
     bool isComplete() const;
     
+public slots:
+    void killThread();
+
 private:
     Ui::CreationPage *ui;
     bool torrentDone;
+    CreateTorrent *ctThread;
 
 private slots:
     void updateProgress(int i);

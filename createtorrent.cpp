@@ -112,6 +112,11 @@ void CreateTorrent::run() {
             outputFilename = this->outputLocation;
         else
             outputFilename = QDir(this->outputLocation).absoluteFilePath(QDir(input).dirName() + ".torrent");
+        QFileInfo outputDir = QFileInfo(outputFilename).dir().absolutePath();
+        if (!outputDir.isWritable()) {
+            emit(logStatusMessage(QString("%1 is not writeable - aborting").arg(outputFilename)));
+            return;
+        }
 
         file_storage fs;
         add_files(fs, input.toUtf8().constData(), file_filter);
@@ -136,7 +141,7 @@ void CreateTorrent::run() {
         torrent.set_creator(this->creator.toUtf8().constData());
         QFileInfo pSource(input);
         set_piece_hashes(torrent, pSource.dir().path().toUtf8().constData(), boost::bind<void>(&doProgressUpdate, _1, torrent.num_pieces(), this));
-        std::ofstream outputFile(outputFilename.toUtf8().constData(), std::ios_base::binary);
+        std::ofstream outputFile(outputFilename.toUtf8().constData(), std::ios_base::binary | std::ios_base::out);
         bencode(std::ostream_iterator<char>(outputFile), torrent.generate());
         outputFile.close();
         emit(updateProgress(100));
@@ -144,5 +149,3 @@ void CreateTorrent::run() {
     }
 
 }
-
-

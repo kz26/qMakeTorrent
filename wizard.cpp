@@ -48,7 +48,9 @@ Wizard::Wizard(QWidget *parent) :
     this->addPage(new TrackersPage);
     this->addPage(new PropertiesPage);
     this->addPage(new SummaryPage);
-    this->addPage(new CreationPage);
+    CreationPage *creationPage = new CreationPage;
+    connect(this, SIGNAL(rejected()), creationPage, SLOT(killThread()));
+    this->addPage(creationPage);
     this->setOption(this->DisabledBackButtonOnLastPage, true);
 }
 
