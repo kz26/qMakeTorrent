@@ -2,8 +2,7 @@
 * Current version: 1.1.0
 * Author: kz26
 * License: BSD
-* [Website](http://kz26.github.com/qMakeTorrent)
-* [Source repository](http://github.com/kz26/qMakeTorrent)
+* [Homepage](http://github.com/kz26/qMakeTorrent)
 
 ## Description
 qMakeTorrent is an advanced torrent creator with batch capability.
