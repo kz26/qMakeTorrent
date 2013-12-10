@@ -1,3 +1,6 @@
+# 1.1.2 - 2913-12-10
+* Fix layout on summary page
+
 # 1.1.1 - 2013-12-10
 * Also add child files in batch mode
 * Fixed another possible crash caused by Unicode filenames
