@@ -36,6 +36,7 @@ SummaryPage::SummaryPage(QWidget *parent) :
 }
 
 void SummaryPage::initializePage() {
+    ui->summaryTextBox->clear();
     QString inputPath = field("inputPath").toString();
     ui->summaryTextBox->append(QString("<b>Input path:</b> %1\n").arg(inputPath));
     if (QFileInfo(inputPath).isDir())
@@ -59,14 +60,14 @@ void SummaryPage::initializePage() {
 
     int pieceSizeIndex = field("pieceSize").toInt();
     int pieceSize;
-    if(pieceSizeIndex == 0)
+    if(pieceSizeIndex == 0) {
         pieceSize = 0;
-    else
-        pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
-    if (pieceSize == 0)
         ui->summaryTextBox->append(QString("<b>Piece size:</b> Auto\n"));
-    else
+	}
+    else {
+        pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
         ui->summaryTextBox->append(QString("<b>Piece size:</b> %1 KB\n").arg(pieceSize));
+	}
     ui->summaryTextBox->append(QString("<b>Include file modification times:</b> %1\n").arg(field("includeFileModTimes").toString()));
     ui->summaryTextBox->append(QString("<b>Private torrent:</b> %1\n").arg(field("privateTorrent").toString()));
 
