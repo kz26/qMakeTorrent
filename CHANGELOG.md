@@ -1,5 +1,5 @@
 # 1.1.2 - 2913-12-10
-* Fix layout on summary page
+* Fixes to summary page
 
 # 1.1.1 - 2013-12-10
 * Also add child files in batch mode

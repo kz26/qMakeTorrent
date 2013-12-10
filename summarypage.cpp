@@ -65,7 +65,7 @@ void SummaryPage::initializePage() {
         ui->summaryTextBox->append(QString("<b>Piece size:</b> Auto\n"));
 	}
     else {
-        pieceSize = 1024 * (2 << (pieceSizeIndex + 2));
+        pieceSize = 2 << (pieceSizeIndex + 2);
         ui->summaryTextBox->append(QString("<b>Piece size:</b> %1 KB\n").arg(pieceSize));
 	}
     ui->summaryTextBox->append(QString("<b>Include file modification times:</b> %1\n").arg(field("includeFileModTimes").toString()));
