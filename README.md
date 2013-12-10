@@ -1,5 +1,5 @@
 # qMakeTorrent
-* Current version: 1.1.0
+* Current version: 1.1.1
 * Author: kz26
 * License: BSD
 * [Homepage](http://github.com/kz26/qMakeTorrent)
