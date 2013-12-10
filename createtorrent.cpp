@@ -87,10 +87,8 @@ void CreateTorrent::run() {
         QDirIterator iit(this->source);
         while(iit.hasNext()) {
             QString fn = iit.next();
-            if(QFileInfo(fn).isDir()) {
-                if(file_filter(fn.toUtf8().constData()))
-                    inputList.append(fn.toUtf8().constData());
-            }
+			if(file_filter(fn.toUtf8().constData()))
+				inputList.append(fn.toUtf8().constData());
         }
     }
 
@@ -103,9 +101,11 @@ void CreateTorrent::run() {
             while(iit.hasNext()) {
                 QString fn = iit.next();
                 if(file_filter(fn.toUtf8().constData()))
-                    emit(logStatusMessage(fn));
+                    emit(logStatusMessage(QString("[READ] %1").arg(fn)));
             }
         }
+		else
+			emit(logStatusMessage(QString("[READ] %1").arg(input)));
 
         QString outputFilename;
         if(!this->isBatch)
@@ -114,7 +114,7 @@ void CreateTorrent::run() {
             outputFilename = QDir(this->outputLocation).absoluteFilePath(QDir(input).dirName() + ".torrent");
         QFileInfo outputDir = QFileInfo(outputFilename).dir().absolutePath();
         if (!outputDir.isWritable()) {
-            emit(logStatusMessage(QString("%1 is not writeable - aborting").arg(outputFilename)));
+            emit(logStatusMessage(QString("[ERROR] %1 is not writeable - aborting").arg(outputFilename)));
             return;
         }
 
@@ -145,7 +145,7 @@ void CreateTorrent::run() {
         bencode(std::ostream_iterator<char>(outputFile), torrent.generate());
         outputFile.close();
         emit(updateProgress(100));
-        emit(logStatusMessage(QString("Created %1").arg(outputFilename)));
+        emit(logStatusMessage(QString("[WRITE] %1").arg(outputFilename)));
     }
 
 }

@@ -28,7 +28,7 @@ I will be more than happy to post them.
 ## Usage
 1. Click "Add File" or "Add Directory" to select an input file or directory. If a directory is
 selected, the option to use batch mode will be enabled. In batch mode, qMakeTorrent creates a torrent
-for each subdirectory directly below the input path.
+for each subdirectory and file directly below the input path.
 2. Next, you will be asked to choose an output path for your torrent(s). If your input was a single file
 or directory, you will be asked to choose the save location of the .torrent file. If your input was a directory
 with batch mode enabled, you will be asked to choose a directory in which to save the .torrent files. In this case,
