@@ -2,7 +2,7 @@
 * Also add child files in batch mode
 * Tweak logging in the torrent creation window
 
-# 1.1.0 - 2013-12-9
+# 1.1.0 - 2013-12-09
 * Fixed crashing bug during torrent creation
 * Set default piece size to Auto
 * Compile Windows binaries with VS2013
