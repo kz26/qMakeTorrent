@@ -82,13 +82,13 @@ void CreateTorrent::run() {
 
     QStringList inputList;
     if(!this->isBatch)
-        inputList.append(this->source.toUtf8().constData());
+        inputList.append(this->source);
     else {
         QDirIterator iit(this->source);
         while(iit.hasNext()) {
             QString fn = iit.next();
 			if(file_filter(fn.toUtf8().constData()))
-				inputList.append(fn.toUtf8().constData());
+				inputList.append(fn);
         }
     }
 

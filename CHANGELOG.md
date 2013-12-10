@@ -1,5 +1,6 @@
 # 1.1.1 - 2013-12-10
 * Also add child files in batch mode
+* Fixed another possible crash caused by Unicode filenames
 * Tweak logging in the torrent creation window
 
 # 1.1.0 - 2013-12-09
