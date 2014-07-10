@@ -31,7 +31,7 @@
 #endif
 
 #include <libtorrent/version.hpp>
-#if LIBTORRENT_VERSION_MINOR < 16
+#if LIBTORRENT_VERSION_MINOR < 16 && LIBTORRENT_VERSION_MAJOR < 1
 #define BOOST_FILESYSTEM_VERSION 2
 #endif
 
