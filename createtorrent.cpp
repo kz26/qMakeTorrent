@@ -54,7 +54,7 @@ void CreateTorrent::makeTorrentFiles(QString source, QString outputLocation, boo
 }
 
 // Courtesy of qBitTorrent
-#if LIBTORRENT_VERSION_MINOR >= 16
+#if LIBTORRENT_VERSION_MINOR >= 16 || LIBTORRENT_VERSION_MAJOR >= 1
 bool file_filter(std::string const& f)
 {
         if (libtorrent::filename(f)[0] == '.') return false;
