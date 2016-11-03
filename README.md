@@ -3,6 +3,9 @@
 * Author: kz26
 * License: BSD 2-clause
 
+**qMakeTorrent is no longer actively developed. Please consider using [dottorrent-gui](https://github.com/kz26/dottorrent-gui) instead.**
+
+
 ## Description
 qMakeTorrent is an advanced torrent creator with batch capability.
 
