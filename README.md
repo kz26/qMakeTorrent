@@ -3,7 +3,7 @@
 * Author: kz26
 * License: BSD 2-clause
 
-**qMakeTorrent is no longer actively developed. Please consider using [dottorrent-gui](https://github.com/kz26/dottorrent-gui) instead.**
+## **qMakeTorrent is no longer actively developed. Please consider using [dottorrent-gui](https://github.com/kz26/dottorrent-gui) instead.**
 
 
 ## Description
